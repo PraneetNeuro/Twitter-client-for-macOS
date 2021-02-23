@@ -20,7 +20,7 @@ struct Datum: Codable {
     let contextAnnotations: [ContextAnnotation]?
     let attachments: Attachments?
     let entities: DatumEntities?
-    let publicMetrics: DatumPublicMetrics?
+    let public_metrics: DatumPublicMetrics?
     let replySettings, authorid, lang, id: String?
     let conversationid: String?
     let possiblySensitive: Bool?
@@ -33,9 +33,9 @@ struct Datum: Codable {
         case createdAt
         case contextAnnotations
         case attachments, entities
-        case publicMetrics
+        case public_metrics = "public_metrics"
         case replySettings
-        case authorid
+        case authorid = "author_id"
         case lang, id
         case conversationid
         case possiblySensitive
@@ -50,7 +50,7 @@ struct Attachments: Codable {
     let mediaKeys: [String]?
     
     enum CodingKeys: String, CodingKey {
-        case mediaKeys
+        case mediaKeys = "media_keys"
     }
 }
 
@@ -120,10 +120,10 @@ struct DatumPublicMetrics: Codable {
     let retweetCount, replyCount, likeCount, quoteCount: Int?
     
     enum CodingKeys: String, CodingKey {
-        case retweetCount
-        case replyCount
-        case likeCount
-        case quoteCount
+        case retweetCount = "retweet_count"
+        case replyCount = "reply_count"
+        case likeCount = "like_count"
+        case quoteCount = "quote_count"
     }
 }
 
@@ -141,11 +141,12 @@ struct Includes: Codable {
 
 // MARK: - Media
 struct Media: Codable {
-    let mediaKey, type: String?
+    let mediaKey, url, type: String?
     
     enum CodingKeys: String, CodingKey {
-        case mediaKey
+        case mediaKey = "media_key"
         case type
+        case url
     }
 }
 
@@ -224,7 +225,7 @@ struct User: Codable {
     let userDescription: String?
     
     enum CodingKeys: String, CodingKey {
-        case profileImageurl
+        case profileImageurl = "profile_image_url"
         case name, id, url
         case pinnedTweetid
         case publicMetrics

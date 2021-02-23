@@ -11,6 +11,10 @@ struct UserSearchResponse: Codable {
     let data: [TwitterUser]
 }
 
+struct userLookup: Codable {
+    let data: TwitterUser
+}
+
 struct TwitterUser: Codable {
     let id: String
     let name: String
